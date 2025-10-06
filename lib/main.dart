@@ -7,16 +7,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   
+    Color color = Theme.of(context).primaryColor;
+
     Widget titleSection = Container(
-      padding: const EdgeInsets.all(32), // soal 3: padding 32 di semua sisi
+      padding: const EdgeInsets.all(32),
       child: Row(
         children: [
           Expanded(
-            // soal 1: letakkan Column di dalam Expanded
+            /* soal 1 */
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start, // posisi di awal baris
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // soal 2: baris pertama di dalam Container agar bisa beri padding bawah 8
+                /* soal 2 */
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: const Text(
@@ -29,13 +32,13 @@ class MyApp extends StatelessWidget {
                 const Text(
                   'Batu, Malang, Indonesia',
                   style: TextStyle(
-                    color: Colors.grey, // warna abu-abu
+                    color: Colors.grey,
                   ),
                 ),
               ],
             ),
           ),
-          // soal 3: ikon bintang merah dan teks "41"
+          /* soal 3 */
           const Icon(
             Icons.star,
             color: Colors.red,
@@ -45,6 +48,17 @@ class MyApp extends StatelessWidget {
       ),
     );
 
+    //  buttonSection: baris berisi 3 tombol sejajar
+    Widget buttonSection = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildButtonColumn(color, Icons.call, 'CALL'),
+        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+        _buildButtonColumn(color, Icons.share, 'SHARE'),
+      ],
+    );
+
+    //  Layout utama
     return MaterialApp(
       title: 'Flutter layout: Muhammad Toyfur Dita Ramadan 2241760126',
       home: Scaffold(
@@ -54,9 +68,32 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: [
             titleSection,
+            buttonSection, // tampil di bawah titleSection
           ],
         ),
       ),
+    );
+  }
+
+  //  Langkah 1: method helper _buildButtonColumn
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
