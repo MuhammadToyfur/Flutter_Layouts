@@ -49,29 +49,38 @@ class MyApp extends StatelessWidget {
         _buildButtonColumn(color, Icons.share, 'SHARE'),
       ],
     );
-  Widget textSection = Container(
-  padding: const EdgeInsets.all(32),
-  child: const Text(
-    'Gunung Bromo merupakan salah satu destinasi wisata paling ikonik di Indonesia. '
-    'Terletak di kawasan Taman Nasional Bromo Tengger Semeru, gunung ini menawarkan pemandangan '
-    'menakjubkan dengan lautan pasir luas dan kawah aktif yang dikelilingi pegunungan. '
-    'Keindahan matahari terbit di puncak Penanjakan menjadi momen yang paling dinanti wisatawan. '
-    'Udara sejuk, nuansa mistis, dan panorama alam yang megah menjadikan Bromo sebagai salah satu '
-    'permata wisata Jawa Timur. '
-    '\n\n— Muhammad Toyfur Dita Ramadan (2241760126)',
-    softWrap: true,
-  ),
-);
+
+    Widget textSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: const Text(
+        'Gunung Bromo merupakan salah satu destinasi wisata paling ikonik di Indonesia. '
+        'Terletak di kawasan Taman Nasional Bromo Tengger Semeru, gunung ini menawarkan pemandangan '
+        'menakjubkan dengan lautan pasir luas dan kawah aktif yang dikelilingi pegunungan. '
+        'Keindahan matahari terbit di puncak Penanjakan menjadi momen yang paling dinanti wisatawan. '
+        'Udara sejuk, nuansa mistis, dan panorama alam yang megah menjadikan Bromo sebagai salah satu '
+        'permata wisata Jawa Timur. '
+        '\n\n Muhammad Toyfur Dita Ramadan - 2241760126',
+        softWrap: true,
+      ),
+    );
+
     //  Layout utama
     return MaterialApp(
       title: 'Flutter layout: Muhammad Toyfur Dita Ramadan 2241760126',
       home: Scaffold(
         appBar: AppBar(title: const Text('Flutter layout demo')),
-        body: Column(
+        body: ListView(
+          
           children: [
+            Image.asset(
+              'images/Bromo.jpeg', // pastikan nama folder dan file sesuai
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
             titleSection,
             buttonSection,
-            textSection // tampil di bawah titleSection
+            textSection,
           ],
         ),
       ),
